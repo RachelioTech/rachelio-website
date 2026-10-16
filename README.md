@@ -1,5 +1,2 @@
 # Rachelio Technology Limited website
-Static HTML/CSS/JS. Deploy: push to GitHub, Settings > Pages > Deploy from branch (main, root).
-Custom domain is set in `CNAME`. Contact addresses: enquiry@, support@ and careers@rachelio.com.
-
-Business details: Rachelio Technology Limited, Suite 2, Floor 1, Profile West, 950 Great West Road, Brentford TW8 9ES. Tel 07379 110264. LocalBusiness schema is in the head of every page.
+Static site for GitHub Pages (www.rachelio.com). Company verification: set values in VER in the generator, or edit the footer and contact blocks. Evidence slots stay hidden until assets are added.
