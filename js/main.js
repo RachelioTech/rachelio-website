@@ -9,7 +9,7 @@ var f=d.getElementById("cf");if(f){var t0=Date.now();f.addEventListener("submit"
 ["name","email","msg"].forEach(function(k){var el=f.elements[k],ok=v.get(k)&&(k!=="email"||/^\S+@\S+\.\S+$/.test(v.get(k)));el.setAttribute("aria-invalid",!ok);if(!ok)bad.push(k)});
 if(!v.get("consent"))bad.push("consent");
 if(bad.length){m.textContent="Error: please complete "+bad.join(", ")+".";f.elements[bad[0]].focus();return}
-if(v.get("website")||Date.now()-t0<3000)return;
+if(v.get("_gotcha")||Date.now()-t0<3000)return;
 var ep=f.dataset.endpoint,txt=v.get("msg")+"\n\n"+v.get("name")+"\n"+v.get("email")+"\n"+(v.get("org")||"");
-if(ep){fetch(ep,{method:"POST",body:v}).then(function(r){if(!r.ok)throw 0;f.outerHTML='<p role="status">Thank you. We will reply within one working day.</p>'}).catch(function(){st.textContent="Sending failed. Please email enquiry@rachelio.com."})}
+if(ep&&!ep.includes("REPLACE_WITH_FORM_ID")){fetch(ep,{method:"POST",headers:{Accept:"application/json"},body:v}).then(function(r){if(!r.ok)throw 0;f.outerHTML='<p role="status">Thank you. We will reply within one working day.</p>'}).catch(function(){st.textContent="Sending failed. Please email enquiry@rachelio.com."})}
 else{location.href="mailto:enquiry@rachelio.com?subject="+encodeURIComponent("Enquiry: "+v.get("type"))+"&body="+encodeURIComponent(txt);st.textContent="Opening your email app. If nothing happens, email enquiry@rachelio.com."}})}})();
